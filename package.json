@@ -2,11 +2,11 @@
   "name": "travel-assistant",
   "version": "1.0.0",
   "description": "",
-  "main": "local.js",
+  "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon local.js",
-    "deploy": "serverless deploy"
+    "deploy": "firebase deploy --only hosting"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "firebase-functions": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.19",
     "path": "^0.12.7"

@@ -1108,7 +1108,7 @@
                                     .getElementById("autoComplete")
                                     .setAttribute("placeholder", "Loading...");
                                 // Fetch External Data Source
-                                const source = await fetch("https://us-central1-fir-training-c0b22.cloudfunctions.net/app/locations");
+                                const source = await fetch("https://us-central1-fir-training-c0b22.cloudfunctions.net/endpoint/locations");
                                 const data = await source.json();
                                 // Post Loading placeholder text
                                 document

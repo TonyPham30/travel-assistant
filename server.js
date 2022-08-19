@@ -8,12 +8,12 @@ require('dotenv').config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors())
+app.use(cors({ origin: true }))
 
-const PROJECT_DIR = path.normalize(__dirname)+ '/sdk';
-console.log(PROJECT_DIR)
+// const PROJECT_DIR = path.normalize(__dirname)+ '/sdk';
+// console.log(PROJECT_DIR)
 
-app.use('/',express.static(path.join(PROJECT_DIR, '')));
+// app.use('/',express.static(path.join(PROJECT_DIR, '')));
 
 app.post('/jwt_service', (req, res) => {
     jwt_data = {

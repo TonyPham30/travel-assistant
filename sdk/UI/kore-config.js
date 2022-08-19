@@ -11,7 +11,7 @@
     botOptions.koreAnonymousFn = koreAnonymousFn;
     botOptions.recorderWorkerPath = '../libs/recorderWorker.js';
 
-    botOptions.JWTUrl = "/jwt_service";
+    botOptions.JWTUrl = "https://asia-northeast1-fir-training-c0b22.cloudfunctions.net/endpoint/jwt_service";
     botOptions.userIdentity = 'TonyPham';// Provide users email id here
     botOptions.botInfo = { name: "booking", "_id": "st-10ca7bbe-2ffd-5802-a469-c2ceda5bd860" }; // bot name is case sensitive
 

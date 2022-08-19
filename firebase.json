@@ -1,0 +1,41 @@
+{
+  "hosting": {
+    "public": "sdk",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/UI/index_widgets_chat.html"
+      }
+    ]
+  },
+  "functions": {
+    "runtime": "nodejs16",
+    "source": "./",
+
+    "predeploy": [],
+    "ignore": [
+        "**/node_modules/**",
+        "**/sdk/**",
+        "**/tests/**",
+        "**/src/**",
+        "**/public/**",
+        "**/src/**",
+        "**/.*",
+        "**/.vscode/**",
+        "**/.github/**",
+        "README.md",
+        "package-lock.json",
+        "yarn.lock",
+        "firebase.json",
+        "nodemon.json",
+        "jest.config.js",
+        "tsconfig.json",
+        ".env"
+    ]
+}
+}
