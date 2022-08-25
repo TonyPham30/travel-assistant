@@ -1,3 +1,5 @@
+
+
 (function (factory) {
     // if (typeof define === 'function' && define.amd) { // AMD
     //    define(factory);
@@ -1097,12 +1099,15 @@
                 }
             }
             chatWindow.prototype.searchLocation = function () {
-                console.log("run here...")
+                
+                // dataComplete la data, nhung chua dua dc thay the cho api
                 const me= this;
+                me.fetchDataComplete = dataComplete
                 me.autoCompleteJS = new autoComplete({
                     data: {
                         src: async () => {
                             try {
+                                console.log("run here...")
                                 // Loading placeholder text
                                 document
                                     .getElementById("autoComplete")
@@ -1119,12 +1124,12 @@
                                 document.querySelector(".chatInputBox").classList.add("hidden-chatInput")
 
                                 // Returns Fetched data
-                                return data.data;
+                                return me.fetchDataComplete;
                             } catch (error) {
                                 return error;
                             }
                         },
-                        keys: ["name", "type", "detail", "code", "path"],
+                        keys: [""],
                         cache: true,
                         filter: (list) => {
                             // Filter duplicates
@@ -1139,7 +1144,7 @@
                             return filteredResults;
                         }
                     },
-                    placeHolder: "Search for Locations...",
+                    placeHolder: "Search for synonyms...",
                     resultsList: {
                         element: (list, data) => {
                             const info = document.createElement("p");
@@ -1174,31 +1179,43 @@
                     }
                 });
         
-                // this.autoCompleteJS.input.addEventListener("init", function (event) {
-                //   console.log(event);
-                // });
+                this.autoCompleteJS.input.addEventListener("init", function (event) {
+                  console.log(event);
+                });
         
-                // autoCompleteJS.input.addEventListener("response", function (event) {
-                //   console.log(event.detail);
-                // });
+                this.autoCompleteJS.input.addEventListener("response", function (event) {
+                  console.log(event.detail);
+                });
         
-                // autoCompleteJS.input.addEventListener("results", function (event) {
-                //   console.log(event.detail);
-                // });
+                this.autoCompleteJS.input.addEventListener("results", function (event) {
+                  console.log(event.detail);
+                });
         
-                // autoCompleteJS.input.addEventListener("open", function (event) {
-                //   console.log(event.detail);
-                // });
+                this.autoCompleteJS.input.addEventListener("open", function (event) {
+                  console.log(event.detail);
+                });
         
-                // autoCompleteJS.input.addEventListener("navigate", function (event) {
-                //   console.log(event.detail);
-                // });
+                this.autoCompleteJS.input.addEventListener("navigate", function (event) {
+                  console.log(event.detail);
+                });
         
-                // autoCompleteJS.input.addEventListener("close", function (event) {
-                //   console.log(event.detail);
-                // });
-        
-                // Toggle Search Engine Type/Mode
+                this.autoCompleteJS.input.addEventListener("close", function (event) {
+                  console.log(event.detail);
+                });
+                this.autoCompleteJS.input.addEventListener("selection", function (event) {
+                    const feedback = event.detail;
+                    // this.autoCompleteJS.input.blur();
+                    // Prepare User's Selected Value
+                    const selection = feedback.selection.value
+                    console.log("selection: " + selection)
+                    // Render selected choice to selection div
+                    // document.querySelector(".selection").innerHTML = selection;
+                    // Replace Input value with the selected value
+                    // this.autoCompleteJS.input.value = selection;
+                    // console.log(this.autoCompleteJS.input)
+                    // Console log autoComplete data feedback
+                    console.log(feedback);
+                  });
                 // document.querySelector(".toggler").addEventListener("click", () => {
                 //     // Holds the toggle button selection/alignment
                 //     const toggle = document.querySelector(".toggle").style.justifyContent;
@@ -1216,7 +1233,6 @@
                 //     }
                 // });
         
-                // Blur/unBlur page elements
                 // const action = (action) => {
                 //     const title = document.querySelector("h1");
                 //     const mode = document.querySelector(".mode");
@@ -1234,7 +1250,6 @@
                 //     }
                 // };
         
-                // Blur/unBlur page elements on input focus
                 // ["focus", "blur"].forEach((eventType) => {
                 //     me.autoCompleteJS.input.addEventListener(eventType, () => {
                 //         // Blur page elements
@@ -2481,6 +2496,11 @@
                         });
                     }
                     else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "searchLocation_template") {
+                        messageHtml = $(me.getChatTemplate("templatebutton")).tmpl({
+                            'msgData': msgData,
+                            'helpers': helpers,
+                            'extension': extension
+                        });
                         if (!msgData.fromHistory) {
                             me.searchLocation()
                         }

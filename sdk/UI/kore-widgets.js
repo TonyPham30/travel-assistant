@@ -276,6 +276,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       widgetElement.find('button').addClass('active')
       setTimeout(function(){
         if(widgetElement.find('button').length){
+          me.openPanel('closePanel');
           me.refreshElement(paneldataString);
         }
       },5000)
@@ -3830,6 +3831,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var checkfordone = ele.find('button');
         checkfordone.off('click').on('click',function(){
           var paneldatastring = ele.attr('paneldetail');
+          _self.openPanel('closePanel');
           _self.refreshElement(paneldatastring);
         })
       }

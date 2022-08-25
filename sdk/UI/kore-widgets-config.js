@@ -6,7 +6,7 @@
     botOptionsWiz.logLevel = 'debug';
     botOptionsWiz.koreAPIUrl = "https://bots.kore.ai";
 
-    botOptionsWiz.JWTUrl = "/jwt_service";
+    botOptionsWiz.JWTUrl = "https://asia-northeast1-fir-training-c0b22.cloudfunctions.net/endpoint/jwt_service";
     botOptionsWiz.userIdentity = 'Tony';// Provide users email id here
     botOptionsWiz.botInfo = { name: "booking", "_id": "st-10ca7bbe-2ffd-5802-a469-c2ceda5bd860" }; // bot name is case sensitive
     botOptionsWiz.clientId = "cs-2b8f13f2-7a6a-5b01-bb99-06fdc0a7df61";
