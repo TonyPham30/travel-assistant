@@ -1098,7 +1098,7 @@
                     $('.chatInputBox').removeClass('isInputAutocomplete')
                 }
             }
-            chatWindow.prototype.searchLocation = function () {
+            chatWindow.prototype.searchDisease = function () {
                 
                 // dataComplete la data, nhung chua dua dc thay the cho api
                 const me= this;
@@ -2495,14 +2495,14 @@
                             'extension': extension
                         });
                     }
-                    else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "searchLocation_template") {
+                    else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "searchDisease_template") {
                         messageHtml = $(me.getChatTemplate("templatebutton")).tmpl({
                             'msgData': msgData,
                             'helpers': helpers,
                             'extension': extension
                         });
                         if (!msgData.fromHistory) {
-                            me.searchLocation()
+                            me.searchDisease()
                         }
                     }
                     else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "quick_replies") {
